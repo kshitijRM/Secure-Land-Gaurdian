@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { AlertTriangle, Scale, FileWarning } from 'lucide-react';
+import { AlertTriangle, Scale, FileWarning, ExternalLink } from 'lucide-react';
 
 const stats = [
   {
@@ -9,24 +9,28 @@ const stats = [
     label: 'Of Civil Cases Are Land Disputes',
     icon: Scale,
     span: 'md:col-span-8',
+    link: 'https://www.worldbank.org/en/topic/land',
   },
   {
     number: '$3.5B',
     label: 'Lost to Land Fraud Annually',
     icon: AlertTriangle,
     span: 'md:col-span-4',
+    link: 'https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-scams-and-crimes/real-estate-fraud',
   },
   {
     number: '70%',
     label: 'Of Records Still Paper-Based',
     icon: FileWarning,
     span: 'md:col-span-4',
+    link: 'https://www.transparency.org/en/publications/global-corruption-report-2006',
   },
   {
     number: '2.5x',
     label: 'Increase in Digital Forgeries Since 2020',
     icon: AlertTriangle,
     span: 'md:col-span-8',
+    link: 'https://www.interpol.int/en/Crimes/Financial-crime',
   },
 ];
 
@@ -67,13 +71,19 @@ export default function Problem() {
               delay={0.1 * (i + 1)}
               className={`${stat.span} col-span-1`}
             >
-              <div
+              <a
+                href={stat.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 data-testid={`problem-stat-${i}`}
-                className="bg-[#0F0F0F] border border-white/5 rounded-2xl p-8 sm:p-10 group hover:border-white/15 transition-all duration-500 relative overflow-hidden h-full"
+                className="block bg-[#0F0F0F] border border-white/5 rounded-2xl p-8 sm:p-10 group hover:border-[#007AFF]/30 transition-all duration-500 relative overflow-hidden h-full cursor-pointer"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#007AFF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10">
-                  <stat.icon className="w-5 h-5 text-[#007AFF] mb-6" strokeWidth={1.5} />
+                  <div className="flex items-center justify-between mb-6">
+                    <stat.icon className="w-5 h-5 text-[#007AFF]" strokeWidth={1.5} />
+                    <ExternalLink className="w-4 h-4 text-neutral-600 opacity-0 group-hover:opacity-100 group-hover:text-[#007AFF] transition-all duration-300 -translate-y-1 group-hover:translate-y-0" strokeWidth={1.5} />
+                  </div>
                   <p className="text-4xl sm:text-5xl font-bold text-white tracking-tighter stat-glow mb-3">
                     {stat.number}
                   </p>
@@ -81,7 +91,7 @@ export default function Problem() {
                     {stat.label}
                   </p>
                 </div>
-              </div>
+              </a>
             </AnimatedCard>
           ))}
         </div>

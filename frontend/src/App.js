@@ -8,7 +8,6 @@ import Impact from "@/components/Impact";
 import BusinessModel from "@/components/BusinessModel";
 import Swot from "@/components/Swot";
 import TargetUsers from "@/components/TargetUsers";
-import Team from "@/components/Team";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -31,8 +30,6 @@ function App() {
       <Swot />
       <div className="section-divider" />
       <TargetUsers />
-      <div className="section-divider" />
-      <Team />
       <div className="section-divider" />
       <FinalCTA />
       <Footer />

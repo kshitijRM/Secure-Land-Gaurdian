@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Upload, Search, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Upload, Search, ShieldCheck, CheckCircle2, ArrowUpRight } from 'lucide-react';
 
 const steps = [
   {
@@ -8,24 +8,28 @@ const steps = [
     title: 'Upload Document',
     description: 'Property owner uploads land documents and identity verification through our secure portal.',
     step: '01',
+    link: 'https://www.adobe.com/acrobat/about-adobe-pdf.html',
   },
   {
     icon: Search,
     title: 'AI Analysis',
     description: 'Our AI engine scans for inconsistencies, cross-references government databases, and detects forgery patterns.',
     step: '02',
+    link: 'https://cloud.google.com/document-ai',
   },
   {
     icon: ShieldCheck,
     title: 'Blockchain Registration',
     description: 'Verified documents are hashed and recorded on an immutable blockchain ledger with timestamp proof.',
     step: '03',
+    link: 'https://ethereum.org/en/developers/docs/blocks/',
   },
   {
     icon: CheckCircle2,
     title: 'Verified & Secure',
     description: 'Land record is now tamper-proof. Any future verification happens instantly via QR code or digital lookup.',
     step: '04',
+    link: 'https://www.hyperledger.org/use/fabric',
   },
 ];
 
@@ -54,17 +58,27 @@ function TimelineStep({ step, index, total }) {
       </div>
 
       {/* Content */}
-      <div className="pb-12">
-        <div className="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center mb-4">
-          <step.icon className="w-5 h-5 text-[#007AFF]" strokeWidth={1.5} />
+      <a
+        href={step.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="pb-12 group cursor-pointer flex-1"
+      >
+        <div className="p-5 rounded-xl hover:bg-white/[0.02] border border-transparent hover:border-white/5 transition-all duration-300">
+          <div className="flex items-center justify-between mb-4">
+            <div className="w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center group-hover:border-[#007AFF]/30 group-hover:bg-[#007AFF]/5 transition-all duration-300">
+              <step.icon className="w-5 h-5 text-[#007AFF]" strokeWidth={1.5} />
+            </div>
+            <ArrowUpRight className="w-4 h-4 text-neutral-600 opacity-0 group-hover:opacity-100 group-hover:text-[#007AFF] transition-all duration-300" strokeWidth={1.5} />
+          </div>
+          <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-white mb-2 group-hover:text-[#007AFF] transition-colors duration-300">
+            {step.title}
+          </h3>
+          <p className="text-sm sm:text-base text-neutral-400 leading-relaxed max-w-md">
+            {step.description}
+          </p>
         </div>
-        <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-white mb-2">
-          {step.title}
-        </h3>
-        <p className="text-sm sm:text-base text-neutral-400 leading-relaxed max-w-md">
-          {step.description}
-        </p>
-      </div>
+      </a>
     </motion.div>
   );
 }

@@ -1,12 +1,13 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { TrendingUp, ShieldAlert, Target, Lightbulb } from 'lucide-react';
+import { TrendingUp, ShieldAlert, Target, Lightbulb, ArrowUpRight } from 'lucide-react';
 
 const swotData = [
   {
     icon: TrendingUp,
     title: 'Strengths',
     color: '#007AFF',
+    link: 'https://ethereum.org/en/developers/docs/consensus-mechanisms/',
     items: [
       'First-mover advantage in blockchain land registry',
       'AI + Blockchain dual-layer security',
@@ -17,6 +18,7 @@ const swotData = [
     icon: ShieldAlert,
     title: 'Weaknesses',
     color: '#FF6B6B',
+    link: 'https://www.investopedia.com/terms/b/blockchain.asp',
     items: [
       'High initial infrastructure cost',
       'Requires government regulatory approval',
@@ -27,6 +29,7 @@ const swotData = [
     icon: Target,
     title: 'Opportunities',
     color: '#4ECB71',
+    link: 'https://www.un.org/sustainabledevelopment/',
     items: [
       'Global land registry digitization trend',
       'Growing blockchain adoption in government',
@@ -37,6 +40,7 @@ const swotData = [
     icon: Lightbulb,
     title: 'Threats',
     color: '#FFB84D',
+    link: 'https://www.weforum.org/stories/2024/blockchain-regulation/',
     items: [
       'Competing government-led digitization efforts',
       'Blockchain regulatory uncertainty',
@@ -68,17 +72,23 @@ export default function Swot() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {swotData.map((item, i) => (
-            <motion.div
+            <motion.a
               key={item.title}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 * i }}
               data-testid={`swot-card-${i}`}
-              className="glass-card rounded-2xl p-8 sm:p-10 group transition-all duration-500"
+              className="block glass-card rounded-2xl p-8 sm:p-10 group transition-all duration-500 cursor-pointer hover:-translate-y-1 relative"
             >
+              <div className="absolute top-6 right-6">
+                <ArrowUpRight className="w-4 h-4 text-neutral-700 opacity-0 group-hover:opacity-100 transition-all duration-300" style={{ color: item.color }} strokeWidth={1.5} />
+              </div>
               <div className="flex items-center gap-3 mb-6">
                 <div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center"
+                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                   style={{ backgroundColor: `${item.color}15` }}
                 >
                   <item.icon className="w-4 h-4" style={{ color: item.color }} strokeWidth={1.5} />
@@ -89,16 +99,16 @@ export default function Swot() {
               </div>
               <ul className="space-y-3">
                 {item.items.map((point, j) => (
-                  <li key={j} className="flex items-start gap-3 text-sm text-neutral-400 leading-relaxed">
+                  <li key={j} className="flex items-start gap-3 text-sm text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
                     <span
-                      className="w-1 h-1 rounded-full mt-2 flex-shrink-0"
+                      className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
                       style={{ backgroundColor: item.color }}
                     />
                     {point}
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
