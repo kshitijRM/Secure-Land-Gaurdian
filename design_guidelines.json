@@ -1,0 +1,146 @@
+{
+  "theme_and_archetype": {
+    "domain": "Web3 / Real Estate Security / SaaS",
+    "theme": "dark",
+    "primary_archetype": "7 (Electric & Neon) paired with 5 (Jewel & Luxury)",
+    "rationale": "Apple-style SaaS minimalism combined with a high-end Web3/security vibe. We use a deep void black base to represent high-end hardware, with controlled electric blue and deep purple restricted strictly to glows and accents to signify security and technology. No flat bright backgrounds."
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Cabinet Grotesk",
+      "body": "Manrope",
+      "code_or_mono": "JetBrains Mono"
+    },
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tighter leading-none",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight",
+      "h3": "text-xl sm:text-2xl font-medium tracking-tight",
+      "h4": "text-lg font-medium tracking-tight",
+      "body": "text-base sm:text-lg leading-relaxed text-neutral-400",
+      "overline": "text-xs sm:text-sm uppercase tracking-[0.2em] font-bold text-neutral-500"
+    },
+    "rules": [
+      "Never center default headings unless it improves visual balance in hero/cta.",
+      "Use 'tracking-tighter' for all headers over 32px to create a premium tech feel.",
+      "Headings should primarily be white (#FFFFFF). Use text gradients sparingly on key words only."
+    ]
+  },
+  "colors": {
+    "background": {
+      "base": "#050505",
+      "surface": "#0F0F0F",
+      "elevated": "#1A1A1A"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A3A3A3",
+      "tertiary": "#666666"
+    },
+    "brand_accents": {
+      "neon_blue": "#007AFF",
+      "deep_purple": "#5E5CE6"
+    },
+    "borders": {
+      "subtle": "rgba(255, 255, 255, 0.08)",
+      "strong": "rgba(255, 255, 255, 0.15)",
+      "glow": "rgba(0, 122, 255, 0.5)"
+    }
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "Generous spacing. Use p-8, p-12, py-24, py-32 for sections.",
+    "bento_grid": {
+      "mode": "Tetris (Asymmetrical)",
+      "implementation": "Base grid-cols-1 md:grid-cols-12 gap-6 or gap-8. Mix col-span-4, col-span-8, row-span-2 to create tension. No perfectly uniform squares.",
+      "rules": "Direct children only in grid. If using framer-motion, the motion.div must be the direct child."
+    },
+    "alignment": "Left-align paragraphs, inputs, and dense content. Center only the main Hero text and Final CTA."
+  },
+  "surface_strategies": {
+    "crystal_glass": {
+      "usage": "Sticky Headers, Floating Navs, Modal Overlays",
+      "classes": "bg-black/60 backdrop-blur-2xl border-b border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+    },
+    "tracing_beam_cards": {
+      "usage": "High-conversion Cards, Features Grid",
+      "classes": "bg-[#0F0F0F] border border-white/5 relative overflow-hidden group hover:border-white/20 transition-colors duration-500",
+      "glow_effect": "Add a radial gradient via before/after pseudo-elements that tracks mouse position, or simply a subtle blue inset shadow on hover."
+    },
+    "grid_borders": {
+      "usage": "SWOT Section, Business Model",
+      "classes": "border-collapse border border-white/10. Items inside have border-r border-b border-white/10."
+    }
+  },
+  "animations": {
+    "libraries": [
+      "framer-motion (for scroll reveals, layout animations)",
+      "lenis (MANDATORY for momentum smooth scrolling)"
+    ],
+    "micro_interactions": [
+      "Hover on buttons: scale 1.05, increase shadow to 0 0 20px rgba(0,122,255,0.4).",
+      "Hover on glass cards: slight lift (-translate-y-1), border brightens to white/20."
+    ],
+    "page_load": "Staggered fade-in up (y: 20 -> 0) for Hero elements."
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-white text-black hover:bg-gray-200 transition-all font-medium px-6 py-3 rounded-full",
+      "secondary": "bg-transparent text-white border border-white/20 hover:border-white/50 backdrop-blur-md transition-all px-6 py-3 rounded-full",
+      "accent": "bg-[#007AFF] text-white hover:bg-[#005bb5] shadow-[0_0_20px_rgba(0,122,255,0.3)] hover:shadow-[0_0_30px_rgba(0,122,255,0.5)] px-6 py-3 rounded-full transition-all"
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "Use thin stroke widths (1.5) for Apple-like elegance."
+    },
+    "testing": "All interactive elements MUST include data-testid (e.g. data-testid=\"hero-cta-button\")."
+  },
+  "media": {
+    "hero_background": {
+      "url": "https://images.unsplash.com/photo-1759735541630-036eefb7cd3a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhcmslMjBtb2Rlcm4lMjBuZW9uJTIwYmx1ZXxlbnwwfHx8fDE3NzU2MzE2Njh8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract blue/purple streaks on dark. Use as an absolute background with opacity-30 and a black radial gradient overlay so text remains readable."
+    },
+    "gis_mapping_feature": {
+      "url": "https://images.unsplash.com/photo-1544411047-c491e34a24e0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHxjaXR5JTIwYWVyaWFsJTIwdmlldyUyMGRhcmslMjBuaWdodCUyMG1hcHxlbnwwfHx8fDE3NzU2MzE2Njh8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Aerial city night map for GIS mapping feature card. Use with grayscale and blue tint."
+    },
+    "abstract_blue_lines": {
+      "url": "https://images.unsplash.com/photo-1773558057883-c15a220761ce?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjd8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMGRhcmslMjBtb2Rlcm4lMjBuZW9uJTIwYmx1ZXxlbnwwfHx8fDE3NzU2MzE2Njh8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Use for the 'AI Fraud Detection' background texture or impact section background."
+    },
+    "team_members": [
+      {
+        "url": "https://images.unsplash.com/photo-1758600587730-a11917c13b85?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzZ8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NTYzMTY1NHww&ixlib=rb-4.1.0&q=85",
+        "description": "Woman with glasses. Team profile."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1764545973653-94c40d993495?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzZ8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NTYzMTY1NHww&ixlib=rb-4.1.0&q=85",
+        "description": "Man with arms crossed. Team profile."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1765776830139-72b2184dae5a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzZ8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3NTYzMTY1NHww&ixlib=rb-4.1.0&q=85",
+        "description": "Man with beard and glasses. Team profile."
+      },
+      {
+        "url": "https://images.pexels.com/photos/5349053/pexels-photo-5349053.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Young man in black attire. Team profile."
+      }
+    ],
+    "logos": [
+      {
+        "url": "https://images.unsplash.com/photo-1764601841441-34ebb3d42a78?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwZ2VvbWV0cmljJTIwbG9nb3xlbnwwfHx8fDE3NzU2MzE2NzZ8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Minimalist white abstract icon. Use as placeholder for partners/backers."
+      }
+    ]
+  },
+  "section_guidelines": {
+    "Hero": "Must contain the glowing abstract background image heavily dimmed. Huge heading (Cabinet Grotesk) with tracking-tighter. Use text-glow effect on 'Digital Land Forgery'. CTA must be rounded-full Apple style. Nav must be sticky Crystal Glass.",
+    "Problem": "Display stats in a dense 'Control Room' bento grid. Number should be text-5xl, label text-sm uppercase (overline).",
+    "Features": "Bento Grid cards. One dominant card (col-span-full md:col-span-8) for Blockchain Security, smaller ones for Biometric Auth, AI Fraud Detection. Use Tracing Beam card style (subtle border/glow on hover).",
+    "How It Works": "Vertical timeline. Use a thin electric blue line (#007AFF) connecting steps. Staggered reveal using framer-motion.",
+    "Impact": "Minimalist section. Use generous whitespace. Focus on emotional storytelling with a serif or high-contrast sans-serif statement.",
+    "Business Model & SWOT": "Use Grid Borders (Technical Look). Expose the skeleton, border-collapse. Keep text strictly white/gray.",
+    "Target Users": "Use clean, borderless list items with subtle hover translate-x-2 effects.",
+    "Team": "Use fetched portrait images in a strict grid-cols-1 sm:grid-cols-2 lg:grid-cols-4. Grayscale images that turn color on hover.",
+    "Final CTA": "High-energy section. Gradient Text for the headline. Massive spacing (py-32).",
+    "Footer": "Massive py-32 space. Huge logo at the bottom right. Contrast shift not needed as the whole site is dark, but use a subtle border-t border-white/10."
+  }
+}
