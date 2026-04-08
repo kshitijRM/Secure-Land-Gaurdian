@@ -1,38 +1,9 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { AlertTriangle, Scale, FileWarning, ExternalLink } from 'lucide-react';
-
-const stats = [
-  {
-    number: '60%',
-    label: 'Of Civil Cases Are Land Disputes',
-    icon: Scale,
-    span: 'md:col-span-8',
-    link: 'https://www.worldbank.org/en/topic/land',
-  },
-  {
-    number: '$3.5B',
-    label: 'Lost to Land Fraud Annually',
-    icon: AlertTriangle,
-    span: 'md:col-span-4',
-    link: 'https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-scams-and-crimes/real-estate-fraud',
-  },
-  {
-    number: '70%',
-    label: 'Of Records Still Paper-Based',
-    icon: FileWarning,
-    span: 'md:col-span-4',
-    link: 'https://www.transparency.org/en/publications/global-corruption-report-2006',
-  },
-  {
-    number: '2.5x',
-    label: 'Increase in Digital Forgeries Since 2020',
-    icon: AlertTriangle,
-    span: 'md:col-span-8',
-    link: 'https://www.interpol.int/en/Crimes/Financial-crime',
-  },
-];
+import { ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { problems } from '@/data/content';
 
 function AnimatedCard({ children, delay = 0, className = '' }) {
   const ref = useRef(null);
@@ -65,18 +36,16 @@ export default function Problem() {
         </AnimatedCard>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {stats.map((stat, i) => (
+          {problems.map((stat, i) => (
             <AnimatedCard
               key={stat.label}
               delay={0.1 * (i + 1)}
               className={`${stat.span} col-span-1`}
             >
-              <a
-                href={stat.link}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to={`/problem/${stat.slug}`}
                 data-testid={`problem-stat-${i}`}
-                className="block bg-[#0F0F0F] border border-white/5 rounded-2xl p-8 sm:p-10 group hover:border-[#007AFF]/30 transition-all duration-500 relative overflow-hidden h-full cursor-pointer"
+                className="block bg-[#0F0F0F] border border-white/5 rounded-2xl p-8 sm:p-10 group hover:border-[#007AFF]/30 transition-all duration-500 relative overflow-hidden h-full cursor-pointer hover:-translate-y-0.5"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#007AFF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10">
@@ -91,7 +60,7 @@ export default function Problem() {
                     {stat.label}
                   </p>
                 </div>
-              </a>
+              </Link>
             </AnimatedCard>
           ))}
         </div>

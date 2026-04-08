@@ -1,30 +1,8 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Eye, Zap, ShieldOff, ArrowUpRight } from 'lucide-react';
-
-const impacts = [
-  {
-    icon: Eye,
-    title: 'Total Transparency',
-    stat: '100%',
-    description: 'Every transaction visible, verifiable, and permanent on the blockchain.',
-    link: 'https://www.blockchain.com/explorer',
-  },
-  {
-    icon: Zap,
-    title: 'Faster Transactions',
-    stat: '10x',
-    description: 'Property transfers completed in minutes instead of weeks.',
-    link: 'https://ethereum.org/en/developers/docs/transactions/',
-  },
-  {
-    icon: ShieldOff,
-    title: 'Reduced Fraud',
-    stat: '99.7%',
-    description: 'Near-complete elimination of document forgery and identity fraud.',
-    link: 'https://www.interpol.int/en/Crimes/Financial-crime',
-  },
-];
+import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { impacts } from '@/data/content';
 
 export default function Impact() {
   const ref = useRef(null);
@@ -32,7 +10,6 @@ export default function Impact() {
 
   return (
     <section id="impact" data-testid="impact-section" className="relative py-24 sm:py-32">
-      {/* Subtle background glow */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#007AFF]/3 rounded-full blur-[150px]" />
       </div>
@@ -55,36 +32,37 @@ export default function Impact() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {impacts.map((item, i) => (
-            <motion.a
+            <motion.div
               key={item.title}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.12 * i, ease: [0.22, 1, 0.36, 1] }}
-              data-testid={`impact-card-${i}`}
-              className="block bg-[#0F0F0F] border border-white/5 rounded-2xl p-8 sm:p-10 text-center group hover:border-[#007AFF]/30 transition-all duration-500 relative overflow-hidden cursor-pointer hover:-translate-y-1"
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-[#007AFF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute top-4 right-4">
-                <ArrowUpRight className="w-4 h-4 text-neutral-600 opacity-0 group-hover:opacity-100 group-hover:text-[#007AFF] transition-all duration-300" strokeWidth={1.5} />
-              </div>
-              <div className="relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center mx-auto mb-6 group-hover:border-[#007AFF]/30 group-hover:bg-[#007AFF]/5 transition-all duration-300">
-                  <item.icon className="w-5 h-5 text-[#007AFF]" strokeWidth={1.5} />
+              <Link
+                to={`/impact/${item.slug}`}
+                data-testid={`impact-card-${i}`}
+                className="block bg-[#0F0F0F] border border-white/5 rounded-2xl p-8 sm:p-10 text-center group hover:border-[#007AFF]/30 transition-all duration-500 relative overflow-hidden cursor-pointer hover:-translate-y-1 h-full"
+              >
+                <div className="absolute inset-0 bg-gradient-to-b from-[#007AFF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-4 right-4">
+                  <ArrowUpRight className="w-4 h-4 text-neutral-600 opacity-0 group-hover:opacity-100 group-hover:text-[#007AFF] transition-all duration-300" strokeWidth={1.5} />
                 </div>
-                <p className="text-5xl sm:text-6xl font-bold tracking-tighter text-white stat-glow mb-2">
-                  {item.stat}
-                </p>
-                <h3 className="text-lg font-medium tracking-tight text-white mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-neutral-400 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </motion.a>
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-xl bg-[#1A1A1A] border border-white/10 flex items-center justify-center mx-auto mb-6 group-hover:border-[#007AFF]/30 group-hover:bg-[#007AFF]/5 transition-all duration-300">
+                    <item.icon className="w-5 h-5 text-[#007AFF]" strokeWidth={1.5} />
+                  </div>
+                  <p className="text-5xl sm:text-6xl font-bold tracking-tighter text-white stat-glow mb-2">
+                    {item.stat}
+                  </p>
+                  <h3 className="text-lg font-medium tracking-tight text-white mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-neutral-400 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

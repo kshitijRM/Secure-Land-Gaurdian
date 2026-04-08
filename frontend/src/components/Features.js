@@ -1,45 +1,8 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Lock, Fingerprint, BrainCircuit, MapPin, QrCode, ArrowUpRight } from 'lucide-react';
-
-const features = [
-  {
-    icon: Lock,
-    title: 'Blockchain Security',
-    description: 'Immutable, tamper-proof land records stored on a decentralized ledger. Every transaction is permanently recorded and publicly verifiable.',
-    span: 'md:col-span-8 md:row-span-2',
-    highlight: true,
-    link: 'https://ethereum.org/en/developers/docs/intro-to-ethereum/',
-  },
-  {
-    icon: Fingerprint,
-    title: 'Biometric Authentication',
-    description: 'Multi-factor biometric verification ensures only verified owners can authorize land transfers.',
-    span: 'md:col-span-4',
-    link: 'https://www.ibm.com/topics/biometrics',
-  },
-  {
-    icon: BrainCircuit,
-    title: 'AI Fraud Detection',
-    description: 'Machine learning models detect anomalous patterns and flag suspicious transactions in real-time.',
-    span: 'md:col-span-4',
-    link: 'https://cloud.google.com/solutions/ai',
-  },
-  {
-    icon: MapPin,
-    title: 'GIS Mapping',
-    description: 'Satellite-integrated Geographic Information System maps every parcel with precision coordinates.',
-    span: 'md:col-span-6',
-    link: 'https://www.esri.com/en-us/what-is-gis/overview',
-  },
-  {
-    icon: QrCode,
-    title: 'QR Verification',
-    description: 'Instant document authentication via unique QR codes linked to blockchain records.',
-    span: 'md:col-span-6',
-    link: 'https://www.qr-code-generator.com/',
-  },
-];
+import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { features } from '@/data/content';
 
 function FeatureCard({ feature, index }) {
   const ref = useRef(null);
@@ -53,18 +16,14 @@ function FeatureCard({ feature, index }) {
       transition={{ duration: 0.6, delay: 0.08 * index, ease: [0.22, 1, 0.36, 1] }}
       className={`${feature.span} col-span-1`}
     >
-      <a
-        href={feature.link}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        to={`/features/${feature.slug}`}
         data-testid={`feature-card-${index}`}
         className={`block bg-[#0F0F0F] border border-white/5 rounded-2xl relative overflow-hidden group hover:border-[#007AFF]/30 transition-all duration-500 cursor-pointer hover:-translate-y-1 ${
           feature.highlight ? 'p-10 sm:p-12' : 'p-8'
         } h-full`}
       >
-        {/* Hover glow */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#007AFF]/5 via-transparent to-[#5E5CE6]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-        {/* Top-right corner glow */}
         <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#007AFF]/10 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         <div className="relative z-10 h-full flex flex-col">
@@ -75,7 +34,7 @@ function FeatureCard({ feature, index }) {
             <ArrowUpRight className="w-4 h-4 text-neutral-600 opacity-0 group-hover:opacity-100 group-hover:text-[#007AFF] transition-all duration-300 translate-y-1 group-hover:translate-y-0" strokeWidth={1.5} />
           </div>
 
-          <h3 className={`${feature.highlight ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'} font-semibold tracking-tight text-white mb-3 group-hover:text-gradient-hover transition-colors duration-300`}>
+          <h3 className={`${feature.highlight ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'} font-semibold tracking-tight text-white mb-3`}>
             {feature.title}
           </h3>
 
@@ -98,7 +57,7 @@ function FeatureCard({ feature, index }) {
             </div>
           )}
         </div>
-      </a>
+      </Link>
     </motion.div>
   );
 }

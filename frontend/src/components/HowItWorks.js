@@ -1,37 +1,8 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Upload, Search, ShieldCheck, CheckCircle2, ArrowUpRight } from 'lucide-react';
-
-const steps = [
-  {
-    icon: Upload,
-    title: 'Upload Document',
-    description: 'Property owner uploads land documents and identity verification through our secure portal.',
-    step: '01',
-    link: 'https://www.adobe.com/acrobat/about-adobe-pdf.html',
-  },
-  {
-    icon: Search,
-    title: 'AI Analysis',
-    description: 'Our AI engine scans for inconsistencies, cross-references government databases, and detects forgery patterns.',
-    step: '02',
-    link: 'https://cloud.google.com/document-ai',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Blockchain Registration',
-    description: 'Verified documents are hashed and recorded on an immutable blockchain ledger with timestamp proof.',
-    step: '03',
-    link: 'https://ethereum.org/en/developers/docs/blocks/',
-  },
-  {
-    icon: CheckCircle2,
-    title: 'Verified & Secure',
-    description: 'Land record is now tamper-proof. Any future verification happens instantly via QR code or digital lookup.',
-    step: '04',
-    link: 'https://www.hyperledger.org/use/fabric',
-  },
-];
+import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { steps } from '@/data/content';
 
 function TimelineStep({ step, index, total }) {
   const ref = useRef(null);
@@ -46,7 +17,6 @@ function TimelineStep({ step, index, total }) {
       data-testid={`timeline-step-${index}`}
       className="relative flex gap-6 sm:gap-8"
     >
-      {/* Timeline line + dot */}
       <div className="flex flex-col items-center">
         <div className="w-10 h-10 rounded-full bg-[#0F0F0F] border border-[#007AFF]/40 flex items-center justify-center flex-shrink-0 relative">
           <div className="absolute inset-0 rounded-full bg-[#007AFF]/10 animate-pulse-glow" />
@@ -57,11 +27,8 @@ function TimelineStep({ step, index, total }) {
         )}
       </div>
 
-      {/* Content */}
-      <a
-        href={step.link}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        to={`/process/${step.slug}`}
         className="pb-12 group cursor-pointer flex-1"
       >
         <div className="p-5 rounded-xl hover:bg-white/[0.02] border border-transparent hover:border-white/5 transition-all duration-300">
@@ -78,7 +45,7 @@ function TimelineStep({ step, index, total }) {
             {step.description}
           </p>
         </div>
-      </a>
+      </Link>
     </motion.div>
   );
 }
